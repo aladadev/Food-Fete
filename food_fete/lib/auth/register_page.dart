@@ -1,37 +1,22 @@
 import 'package:flutter/material.dart';
-
 import 'package:food_fete/components/buttons.dart';
 import 'package:food_fete/components/textfield.dart';
-import 'package:food_fete/views/homepage/homepage.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final VoidCallback? onTap;
-
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
 
-  //Login Function
-  void login() {
-    /*
-      Authentication goes here
-    */
-
-    //then navigate to homepage
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
-  }
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             //Logo
             Icon(
-              Icons.lock_open_rounded,
+              Icons.app_registration_rounded,
               size: 100,
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
@@ -51,9 +36,9 @@ class _LoginPageState extends State<LoginPage> {
               height: 24,
             ),
 
-            //slogan for the app
+            //Create an new account
             Text(
-              'Food Fete - Your Food Companion',
+              'Create a new account!',
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary,
@@ -81,9 +66,18 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
 
+            MyTextField(
+                controller: confirmPasswordController,
+                hintText: 'Confirm Password',
+                obscureText: true),
+
+            const SizedBox(
+              height: 20,
+            ),
+
             CustomButton(
-              text: 'Login',
-              onTap: login,
+              text: 'Register',
+              onTap: () {},
             ),
 
             const SizedBox(
@@ -95,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'New User? ',
+                  'Already an user? ',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary,
                   ),
@@ -103,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    'Register Here!',
+                    'Login Here!',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.inversePrimary,

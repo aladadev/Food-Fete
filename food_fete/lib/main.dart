@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_fete/auth/login_page.dart';
+import 'package:food_fete/auth/log_or_register_page.dart';
 import 'package:food_fete/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: LoginPage(
-        registerFunc: () {},
-      ),
+      home: const LoginOrRegister(),
     );
   }
 }
